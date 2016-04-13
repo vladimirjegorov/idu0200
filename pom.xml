@@ -93,6 +93,6 @@
 
   </dependencies>
   <build>
-    <finalName>idu0200-aleksandr</finalName>
+    <finalName>article</finalName>
   </build>
 </project>
