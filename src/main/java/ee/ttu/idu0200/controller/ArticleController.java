@@ -45,11 +45,15 @@ public class ArticleController {
     ArticleForm articleForm = articleConverter.toArticleForm(req);
     Map<String, String> bindingResult = articleFormValidator.validate(articleForm);
     req.setAttribute("bindingResult", bindingResult);
-    req.setAttribute("article", articleForm);
     if (bindingResult.isEmpty()) {
       Article article = articleConverter.toArticle(articleForm);
       articleDao.update(article);
+      Article articleReloaded = articleDao.findById(article.getId());
+      ArticleForm articleFormReloaded = articleConverter.toArticleForm(articleReloaded);
+      req.setAttribute("article", articleFormReloaded);
       req.setAttribute("successMessage", "saveSuccess");
+    } else {
+      req.setAttribute("article", articleForm);
     }
 
     return ARTICLE_JSP;
