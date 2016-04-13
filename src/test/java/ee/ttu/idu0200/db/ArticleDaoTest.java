@@ -101,4 +101,22 @@ public class ArticleDaoTest {
     assertEquals(publishedDate2.getTime(), article1.getPublishedDate().getTime());
     assertEquals("Content2", article1.getContent());
   }
+
+  @Test
+  public void updatesArticle() throws Exception {
+    Article article = new Article();
+    article.setId(123L);
+    article.setTitle("Title");
+    Date date = new Date();
+    article.setPublishedDate(date);
+    article.setContent("Content");
+
+    articleDao.update(article);
+    verify(preparedStatementMock).setString(1, "Title");
+    verify(preparedStatementMock).setDate(2, new java.sql.Date(date.getTime()));
+    verify(preparedStatementMock).setString(3, "Content");
+    verify(preparedStatementMock).setLong(4, 123L);
+    verify(preparedStatementMock).executeUpdate();
+    verifyNoMoreInteractions(preparedStatementMock);
+  }
 }
