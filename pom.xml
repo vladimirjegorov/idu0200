@@ -84,6 +84,13 @@
       <version>9.4.1208.jre7</version>
     </dependency>
 
+    <!-- Migration of DB -->
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

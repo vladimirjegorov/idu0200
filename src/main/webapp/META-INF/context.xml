@@ -25,10 +25,11 @@
   <!-- url: The JDBC connection url for connecting to your MySQL database.
        -->
 
+  <!-- NB! maxTotal=2 because we need 1 connection for app, and another for Flyway migrator -->
   <Resource name="jdbc/dataSource"
             auth="Container"
             type="javax.sql.DataSource"
-            maxTotal="1"
+            maxTotal="2"
             maxIdle="1"
             username="fzfjkkfmtsdahl"
             password="DBF24niFYtzkI-R4hDWQLWJRMx"
