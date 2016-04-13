@@ -28,7 +28,7 @@
   <Resource name="jdbc/dataSource"
             auth="Container"
             type="javax.sql.DataSource"
-            maxActive="1"
+            maxTotal="1"
             maxIdle="1"
             username="fzfjkkfmtsdahl"
             password="DBF24niFYtzkI-R4hDWQLWJRMx"
