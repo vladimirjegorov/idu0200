@@ -58,7 +58,6 @@ public class ArticleServlet extends HttpServlet {
   }
 }
 
-// TODO: Tests for DAO
 // TODO: Ajax
 
 // TODO: migrator ??
