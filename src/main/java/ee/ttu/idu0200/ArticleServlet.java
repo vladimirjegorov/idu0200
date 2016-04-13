@@ -2,7 +2,7 @@ package ee.ttu.idu0200;
 
 import ee.ttu.idu0200.controller.ArticleController;
 import ee.ttu.idu0200.controller.ArticleListController;
-import ee.ttu.idu0200.validator.ArticleFormValidator;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -14,9 +14,12 @@ import java.io.IOException;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import static org.apache.commons.lang3.math.NumberUtils.isNumber;
+import static org.apache.logging.log4j.LogManager.getLogger;
 
 @WebServlet({"/article/s"})
 public class ArticleServlet extends HttpServlet {
+
+  private static Logger LOG = getLogger(ArticleServlet.class);
 
   @Inject
   private ArticleListController articleListController;
@@ -24,6 +27,10 @@ public class ArticleServlet extends HttpServlet {
   @Inject
   private ArticleController articleController;
 
+  @Override
+  public void init() throws ServletException {
+    LOG.info("ArticleServlet.init() : I was created");
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,7 +59,6 @@ public class ArticleServlet extends HttpServlet {
 }
 
 // TODO: Tests for DAO
-// TODO: Logs
 // TODO: Ajax
 
 // TODO: migrator ??

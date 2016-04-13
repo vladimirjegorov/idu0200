@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -19,4 +21,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Articles</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <c:url value="/article/s" var="homeUrl" />
+        <li class="active"><a href="${homeUrl}">Home</a></li>
+
+        <c:url value="/log/article.log" var="logUrl" />
+        <li><a href="${logUrl}" target="_blank">Log</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 <body>

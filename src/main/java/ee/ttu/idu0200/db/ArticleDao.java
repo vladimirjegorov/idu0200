@@ -1,6 +1,7 @@
 package ee.ttu.idu0200.db;
 
 import ee.ttu.idu0200.model.Article;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -8,7 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.apache.logging.log4j.LogManager.getLogger;
+
 public class ArticleDao {
+
+  private static Logger LOG = getLogger(ArticleDao.class);
 
   public static final String SELECT_ALL_ARTICLES = "SELECT id, title, published_date, content FROM article";
   public static final String SELECT_ARTICLE_BY_ID = "SELECT id, title, published_date, content FROM article WHERE id = ?";
@@ -23,6 +28,8 @@ public class ArticleDao {
       try (Connection conn = dataSource.getConnection()) {
         PreparedStatement sql = conn.prepareStatement(SELECT_ARTICLE_BY_ID);
         sql.setLong(1, id);
+
+        LOG.info("findById: id = " + id);
 
         ResultSet set = sql.executeQuery();
         if (set.next()) {
@@ -44,6 +51,7 @@ public class ArticleDao {
         while (set.next()) {
           articles.add(toArticle(set));
         }
+        LOG.info("findAll: size = " + articles.size());
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
@@ -61,6 +69,7 @@ public class ArticleDao {
         sql.setLong(4, article.getId());
 
         sql.executeUpdate();
+        LOG.info("update: id = " + article.getId());
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);

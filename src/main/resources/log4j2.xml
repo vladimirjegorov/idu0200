@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <!-- https://logging.apache.org/log4j/2.0/manual/lookups.html#WebLookup -->
+    <File name="A1" fileName="${web:rootDir}/log/article.log" append="false">
+      <PatternLayout pattern="%d %-5p [%t] %C: %m%n"/>
+    </File>
+  </Appenders>
+  <Loggers>
+    <Logger name="ee.ttu.idu0200" level="info">
+      <AppenderRef ref="A1"/>
+    </Logger>
+  </Loggers>
+</Configuration>
