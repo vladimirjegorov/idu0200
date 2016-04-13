@@ -36,7 +36,9 @@ public class ArticleConverter {
     article.setTitle(articleForm.getTitle());
 
     try {
-      Date publishedDate = parseDate(articleForm.getPublishedDate(), "dd-MM-yyyy");
+      // Date from input='date' comes in format yyyy-MM-dd
+      // http://stackoverflow.com/questions/7372038/is-there-any-way-to-change-input-type-date-format
+      Date publishedDate = parseDate(articleForm.getPublishedDate(), "yyyy-MM-dd");
       article.setPublishedDate(publishedDate);
     } catch (ParseException e) {
       // Should not happen
