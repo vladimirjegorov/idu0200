@@ -6,8 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setBundle basename="ee.ttu.idu0200.i18n.labels" var="labels" scope="application"/>
-
 <div class="container">
   <h1>Edit article</h1>
   <c:if test="${not empty successMessage}">
@@ -30,7 +28,7 @@
       <div class="col-sm-10">
         <input class="form-control" id="title" value="${article.title}" name="title">
         <c:if test="${isTitleError}">
-          <span class="help-block"><fmt:message bundle="${labels}" key="${bindingResult['article.title']}"/></span>
+          <span class="help-block"><fmt:message key="${bindingResult['article.title']}"/></span>
         </c:if>
       </div>
     </div>
@@ -40,7 +38,7 @@
       <div class="col-sm-10">
         <input class="form-control" id="publishedDate" value="${article.publishedDate}" type="date" name="publishedDate">
         <c:if test="${isPublishedDateError}">
-          <span class="help-block"><fmt:message bundle="${labels}" key="${bindingResult['article.publishedDate']}"/></span>
+          <span class="help-block"><fmt:message key="${bindingResult['article.publishedDate']}"/></span>
         </c:if>
       </div>
     </div>
@@ -50,7 +48,7 @@
       <div class="col-sm-10">
         <textarea class="form-control" id="content" name="content">${article.content}</textarea>
         <c:if test="${isContentError}">
-          <span class="help-block"><fmt:message bundle="${labels}" key="${bindingResult['article.content']}"/></span>
+          <span class="help-block"><fmt:message key="${bindingResult['article.content']}"/></span>
         </c:if>
       </div>
     </div>
