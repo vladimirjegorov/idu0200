@@ -17,7 +17,7 @@
         <td>${article.publishedDate}</td>
         <td>
           <c:url value="/article/articleservice/?id=${article.id}" var="articleServiceLink"/>
-          <a href="${articleServiceLink}" data-toggle="modal" data-target="#modal" class="btn btn-default btn-sm">
+          <a href="${articleServiceLink}" data-toggle="modal" data-remote="false" data-target="#modal" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-eye-open"></span>
             View
           </a>
@@ -39,20 +39,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title">Article details</h4>
       </div>
       <div class="modal-body">
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" role="form" id="form">
           <div class="form-group">
-            <label for="id" class="control-label">Id:</label>
-            <p class="form-control-static" id="id">
+            <label for="id" class="col-sm-2 control-label">Id:</label>
+            <p class="col-sm-10 form-control-static" id="id"></p>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">Content:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label for="content" class="col-sm-2 control-label">Content:</label>
+            <div class="col-sm-10">
+              <textarea class=" form-control" id="content" rows="5"></textarea>
+            </div>
           </div>
         </form>
+
+        <div class="progress" id="progress" style="display: none;">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
