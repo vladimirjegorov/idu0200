@@ -58,6 +58,4 @@ public class ArticleServlet extends HttpServlet {
   }
 }
 
-// TODO: Ajax
-
 // TODO: Sequence diagrams
