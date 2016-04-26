@@ -31,11 +31,11 @@ public class ArticleController {
     Long id = Long.valueOf(idAttribute);
 
     Article article = articleDao.findById(id);
-    ArticleForm articleForm = articleConverter.toArticleForm(article);
 
     if (article == null) {
       return ARTICLE_NOT_FOUND_JSP;
     }
+    ArticleForm articleForm = articleConverter.toArticleForm(article);
 
     req.setAttribute("article", articleForm);
     return ARTICLE_JSP;
